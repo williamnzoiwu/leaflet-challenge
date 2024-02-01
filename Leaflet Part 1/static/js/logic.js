@@ -1,3 +1,4 @@
+// Set base URL
 let url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson"
 
 // Creating the map object
@@ -32,7 +33,7 @@ d3.json(url).then((data) => {
         }
     }
 
-    // Set radius
+    // Set marker radius
     function setRadius(mag) {
         if (mag == 0) {
             return 1;
@@ -40,6 +41,7 @@ d3.json(url).then((data) => {
         return mag * 4;
     }
 
+    // Set marker functions and popups
     function pointStyle(feature) {
         return {
             fillColor: setColor(feature.geometry.coordinates[2]),
@@ -49,7 +51,7 @@ d3.json(url).then((data) => {
             weight: 1
         }
     }
-
+    
     L.geoJson(data, {
         pointToLayer: function (feature, latLong) {
             let marker = L.circleMarker(latLong);
