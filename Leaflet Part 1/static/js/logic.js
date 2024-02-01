@@ -40,7 +40,7 @@ d3.json(url).then((data) => {
         return mag * 4;
     }
 
-    function pointStyle(feature, latLong) {
+    function pointStyle(feature) {
         return {
             fillColor: setColor(feature.geometry.coordinates[2]),
             radius: setRadius(feature.properties.mag),
@@ -64,7 +64,7 @@ d3.json(url).then((data) => {
     //Create legend
     let legend = L.control({ position: "bottomright" });
 
-    legend.onAdd = function (map) {
+    legend.onAdd = function () {
         let div = L.DomUtil.create("div", "legend");
         div.innerHTML += "<h4>Depth Key</h4>";
         div.innerHTML += '<i style="background: green"></i><span>-10 - 10</span><br>';
